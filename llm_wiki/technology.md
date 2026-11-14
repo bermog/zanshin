@@ -1,3 +1,7 @@
+---
+description: The frameworks, the libraries, the commands for build, test, lint and run, deployment, and the technical constraints. Read when you add a dependency, run a command or choose a tool.
+---
+
 # Technology
 
 What belongs here: the tech stack, tooling, and technical limits of the project.
@@ -35,10 +39,11 @@ What belongs here: the tech stack, tooling, and technical limits of the project.
 
 - **Vitest** is the unit test runner (Angular CLI default). Test files sit next to their source as `<file>.spec.ts`.
 - **angular-eslint** for TypeScript and template linting; **Prettier** for formatting (`.prettierrc` at the root).
-- **Stylelint** (`stylelint-config-standard-scss`) with rules for: BEM selectors with `c-` / `l-` block prefixes; custom property naming (`--zn-sys-*` only in `s03_base/_system-tokens.scss`, `--zn-sem-*` only in `s03_base/_semantic-tokens.scss`, `--<block>-*` in `s04_layouts` and `s05_components`); no Sass variables, literal colours or literal lengths in `s04_layouts` and `s05_components` (`declaration-strict-value` or equivalent).
+- **Stylelint** (`stylelint-config-standard-scss`) with rules for: BEM selectors with `c-` / `l-` / `g--` prefixes; custom property naming (`--zn-sys-*` only in `s03_base/_system-tokens.scss`, `--zn-sem-*` only in `s03_base/_semantic-tokens.scss`, `--<block>-*` and `--<block>-privateState-*` in `s05_components` and `s06_layouts`); no Sass variables, literal colours or literal lengths in `s05_components` and `s06_layouts` (`declaration-strict-value` or equivalent); `!important` only in `s04_global`.
 - **Angular CLI style settings:** `src/styles.scss` is the only entry in the build `styles` array; component schematics default to `style: none` in `angular.json`, so generated components get no style file.
 - CI (GitHub Actions) installs with `pnpm install --frozen-lockfile`, then runs lint, tests and a production build on every push and pull request.
-- Deployed as a static site (GitHub Pages or Netlify). The SPA needs a fallback to `index.html` for deep links.
+- Deployed as a static site on **GitHub Pages**, from CI on merge to `main`. Deep links need a `404.html` copy of `index.html` as the SPA fallback. *Why:* the repository is already on GitHub, so no extra account or service is needed.
+- **Playwright** is the end-to-end test runner. The suites (create, move, export → import) are not part of v1; they are added when the project grows, as described in [roadmap.md](roadmap.md#later-beyond-the-browser).
 
 ## Technical constraints
 
@@ -51,7 +56,7 @@ What belongs here: the tech stack, tooling, and technical limits of the project.
 - **Versioned data format.** Stored and exported JSON carries a `schemaVersion`. Unknown or newer versions are rejected with a clear message; older versions are migrated in code.
 - **Import replaces, never merges.** Importing into a non-empty board requires explicit user confirmation, and the swap is all-or-nothing.
 - **Browsers:** current evergreen versions of Chrome, Edge, Firefox and Safari (desktop and mobile). No IE or legacy support.
-- **Accessibility:** WCAG 2.2 AA. Full keyboard support, including moving cards without a mouse; visible focus; sufficient colour contrast; respects `prefers-reduced-motion`.
-- **Responsive:** usable from 360 px wide upwards. On narrow screens columns scroll horizontally or stack.
+- **Accessibility:** WCAG 2.2 AA. Full keyboard support, including moving cards without a mouse; visible focus; sufficient colour contrast; respects `prefers-reduced-motion`. The full list of requirements is in [accessibility.md](accessibility.md).
+- **Responsive:** usable from 360 px wide upwards. On narrow screens the columns scroll horizontally with scroll snap, one column per snap point; they never stack.
 - **Performance:** initial bundle under the Angular CLI default budgets; lazy-load feature routes.
 - **No third-party tracking or analytics.** User data never leaves the browser.

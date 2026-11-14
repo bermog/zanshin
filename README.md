@@ -68,14 +68,14 @@ v1.0 is a small, fixed scope; everything after it is an idea, not a commitment. 
 
 ## Documentation
 
-[`llm_wiki/`](llm_wiki/) is the source of truth for the project:
+[`llm_wiki/`](llm_wiki/) is the source of truth for the project, kept as an LLM wiki: a knowledge base that coding agents read before a task and keep current.
 
-- [product](llm_wiki/product.md): purpose, users, features, scope
-- [technology](llm_wiki/technology.md): stack, tooling, constraints
-- [architecture](llm_wiki/architecture.md): structure, conventions, decisions
-- [roadmap](llm_wiki/roadmap.md): releases from v0.1 to ideas beyond v1
+- [`llm_wiki/index.md`](llm_wiki/index.md) catalogs every page with a one-line description. Start there.
+- [`llm_wiki/AGENTS.md`](llm_wiki/AGENTS.md) is the schema: how pages are written and how agents ingest sources, answer questions and lint the wiki.
+- [`llm_wiki/log.md`](llm_wiki/log.md) records each change to the wiki.
+- `llm_wiki/raw/` holds documents dropped in as sources (specs, notes, exported tickets) for agents to ingest.
 
-[`AGENTS.md`](AGENTS.md) points coding agents to these pages.
+The root [`AGENTS.md`](AGENTS.md) points coding agents to the wiki.
 
 ## License
 

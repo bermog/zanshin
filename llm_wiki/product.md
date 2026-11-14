@@ -1,3 +1,7 @@
+---
+description: The purpose, the target users, the key features and the business objectives of the product. Read when a task depends on what the product is for or who uses it.
+---
+
 # Product
 
 What belongs here: what the product is, who it is for, and why it exists.
@@ -46,7 +50,7 @@ The name and visual identity come from archery. *Zanshin* (残心, "remaining mi
 - **Showcase modern Angular.** Use current Angular 22 practice (standalone components, signals, zoneless change detection, Signal Forms, the new control flow) so the repository works as a code sample.
 - **Show professional quality in a small scope.** Clean architecture, consistent naming, tested core logic, and a design system built from tokens.
 - **Be easy to try.** Deployed publicly as a static site; usable in under 10 seconds with no sign-up.
-- **Learning.** Practice SCSS architecture with Dart Sass (layered Sass project; system and semantic variables and tokens; per-block design tokens in `c-`/`l-` BEM blocks), accessible drag and drop, and safe handling of persisted and imported data.
+- **Learning.** Practice SCSS architecture with Dart Sass ([design-system.md](design-system.md)), accessible drag and drop ([accessibility.md](accessibility.md)), and safe handling of persisted and imported data ([data-format.md](data-format.md)).
 
 Success measures:
 

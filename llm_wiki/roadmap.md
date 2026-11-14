@@ -1,8 +1,12 @@
+---
+description: The product direction over time as releases, from the first working build to ideas beyond v1. Read when you decide whether a feature belongs in the current release or a later one.
+---
+
 # Roadmap
 
 What belongs here: the product's direction over time, organized as releases, from the first working build to ideas beyond v1.
 
-Read with `product.md` (scope), `implementation-plan.md` (the stage-by-stage build for v1) and `architecture.md` (decisions that later releases must respect). This file says *what ships when*; the implementation plan says *how v1 is built*.
+Read with [product.md](product.md) (scope), [implementation-plan.md](implementation-plan.md) (the stage-by-stage build for v1) and [architecture.md](architecture.md) (decisions that later releases must respect). This file says *what ships when*; the implementation plan says *how v1 is built*.
 
 ## Principles
 
@@ -45,7 +49,7 @@ The first version someone could actually use.
 
 - Header, board page and the four columns: Quiver, Nock, Draw, Loose.
 - Create, edit and delete cards, with validation and delete confirmation.
-- Board saved to local storage and restored on reload.
+- Board saved to local storage and restored on reload (built in v0.1, first visible here).
 - Not-found page.
 
 **Milestone:** a user can manage cards on the board and nothing is lost on reload.
@@ -84,11 +88,11 @@ The portfolio release.
 
 ## After v1
 
-These are ideas, not commitments. Each one needs its scope agreed and `product.md`, `architecture.md` and `implementation-plan.md` updated before work starts.
+These are ideas, not commitments. Each one needs its scope agreed and [product.md](product.md), [architecture.md](architecture.md) and [implementation-plan.md](implementation-plan.md) updated before work starts.
 
 ### v1.1: Comfort
 
-Small improvements that make daily use nicer, with no data format changes.
+Small improvements that make daily use nicer, with no changes to the board schema (a stored preference such as the theme choice is fine).
 
 - Dark theme (remap of semantic tokens) with a toggle that follows the OS by default.
 - Search or filter cards by text.
@@ -121,7 +125,8 @@ Only if the project grows past a portfolio piece.
 - Installable PWA with offline support.
 - IndexedDB storage if local storage limits become a problem.
 - Optional account and cloud sync, keeping local-only mode as the default.
-- End-to-end tests (Playwright) for the main flows.
+
+- End-to-end tests for the main flows, with Playwright (see [technology.md](technology.md#development-tools)).
 
 ---
 
