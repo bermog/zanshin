@@ -37,7 +37,7 @@ What belongs here: the tech stack, tooling, and technical limits of the project.
 | Format                 | `pnpm format` (Prettier)                  |
 | Generate a component   | `pnpm ng g c features/<name>` (no style file, standalone, no `.component` suffix) |
 
-- **Vitest** is the unit test runner (Angular CLI default). Test files sit next to their source as `<file>.spec.ts`.
+- **Vitest** is the unit test runner (Angular CLI default). Test files sit next to their source as `<file>.spec.ts`. How tests are written and what each stage must test is in [testing.md](testing.md).
 - **angular-eslint** for TypeScript and template linting; **Prettier** for formatting (`.prettierrc` at the root).
 - **Stylelint** (`stylelint-config-standard-scss`) with rules for: BEM selectors with `c-` / `l-` / `g--` prefixes; custom property naming (`--zn-sys-*` only in `s03_base/_system-tokens.scss`, `--zn-sem-*` only in `s03_base/_semantic-tokens.scss`, `--<block>-*` and `--<block>-privateState-*` in `s05_components` and `s06_layouts`); no Sass variables, literal colours or literal lengths in `s05_components` and `s06_layouts` (`declaration-strict-value` or equivalent); `!important` only in `s04_global`.
 - **Angular CLI style settings:** `src/styles.scss` is the only entry in the build `styles` array; component schematics default to `style: none` in `angular.json`, so generated components get no style file.
@@ -60,3 +60,7 @@ What belongs here: the tech stack, tooling, and technical limits of the project.
 - **Responsive:** usable from 360 px wide upwards. On narrow screens the columns scroll horizontally with scroll snap, one column per snap point; they never stack.
 - **Performance:** initial bundle under the Angular CLI default budgets; lazy-load feature routes.
 - **No third-party tracking or analytics.** User data never leaves the browser.
+
+## Sources
+
+- `llm_wiki/raw/design-system-reference-folder-structure.md`, ingested 2026-11-14. Summary: [design-system-folder-structure.md](design-system-folder-structure.md).

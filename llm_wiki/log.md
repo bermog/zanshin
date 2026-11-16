@@ -77,3 +77,35 @@ The record of each operation on the wiki, oldest first. Append only. The entry f
 - updated: implementation-plan.md (Stage 1 first blocks and Done when)
 - updated: index.md
 - conflict adopted: modifiers change private state, never design tokens (recorded in source-design-system-reference-tokens.md)
+
+## [2026-11-16] lint | 5 fixed, 0 reported
+
+- fixed: renamed source-design-system-reference-folder-structure.md to design-system-folder-structure.md and updated its links
+- fixed: renamed source-design-system-reference-bem.md to design-system-bem.md and updated its links
+- fixed: renamed source-design-system-reference-tokens.md to design-system-tokens.md and updated its links
+- fixed: renamed source-design-system-reference-globals.md to design-system-globals.md and updated its links
+- fixed: renamed source-design-system-reference-layout.md to design-system-layout.md and updated its links
+
+## [2026-11-16] lint | 0 fixed, 9 reported
+
+- fixed: none
+- reported: 7 findings that need a decision and 2 suggestions, see the lint report
+
+## [2026-11-16] lint | 7 fixed, 2 reported
+
+- fixed: design-system-tokens.md: removed the resolved Conflict: line on modifiers and design tokens
+- fixed: implementation-plan.md: Stage 3 column modifiers change private state, not design tokens
+- fixed: implementation-plan.md: Stage 5 --dragging modifier changes private state, not design tokens
+- fixed: architecture.md: value flow has seven steps, not five
+- fixed: implementation-plan.md: Stylelint prefixes are c-/l-/g-- in Stage 0 and Stage 1
+- fixed: implementation-plan.md: added $margins to the Stage 1 system maps
+- fixed: design-system.md: _g--color.scss takes its values from the system colour tokens
+
+## [2026-11-16] lint | 5 fixed, 0 reported
+
+- fixed: design-system.md: added the ## Sources section
+- fixed: architecture.md: added the ## Sources section, linked testing.md
+- fixed: technology.md: added the ## Sources section, linked testing.md
+- fixed: implementation-plan.md: added the ## Sources section
+- created: testing.md (gathers testing statements from product.md, technology.md, architecture.md, data-format.md and implementation-plan.md)
+- updated: index.md

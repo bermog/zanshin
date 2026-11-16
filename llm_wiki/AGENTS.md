@@ -41,7 +41,7 @@ Groups in `index.md`:
 | Group | Pages |
 |-------|-------|
 | `## Project` | Subject pages about the project: `product.md`, `technology.md`, `architecture.md` and each page that an ingest or a query adds. |
-| `## Sources` | 1 summary page for each ingested document in `raw/`, with the name `source-<document name>.md`. |
+| `## Sources` | 1 summary page for each ingested document in `raw/`, named by the summary page rule of the ingest workflow. |
 | `## Agent instructions` | The rules for text that a model reads as instructions. |
 
 If a new page fits no group, add a group heading (`## <Subject>`) to `index.md` and a row to this table.
@@ -52,7 +52,7 @@ Use this workflow to file 1 source into the wiki. A source is a document in `raw
 
 1. Read the source to its end.
 2. Read `index.md`, then each page whose description matches a subject of the source.
-3. If the source is a document in `raw/`, write its summary page `source-<document name>.md`: what the document is, its date, a maximum of 10 statements that matter for the project, and a link to each page that step 4 changes. If the summary page exists, replace its content. If the source is a file or folder of the project, write no summary page.
+3. If the source is a document in `raw/`, write its summary page `<subject>-<topic>.md` in kebab-case. `<subject>` is the subject that the document is about, such as `design-system` or `payment-provider`. `<topic>` is the specific part of that subject that the document covers, such as `globals` or `contract`. Take both from the content of the document, not from its file name, and leave out words that name the kind of document, such as `source`, `reference`, `summary` or `notes`. Example: a course page on the global modifiers of a design system gets the summary page `design-system-globals.md`. If a page that is not the summary of this document has that name, append `-summary`. The summary page holds what the document is, its date, a maximum of 10 statements that matter for the project, and a link to each page that step 4 changes. If the summary page exists, replace its content. If the source is a file or folder of the project, write no summary page.
 4. Update each page that the source changes:
    - Replace a `<!-- fill in: ... -->` comment with content if the source gives the content.
    - Add each statement that the page does not have.
@@ -113,7 +113,7 @@ Example:
 ```markdown
 ## [2026-11-13] ingest | llm_wiki/raw/payment-provider-contract.md
 
-- created: source-payment-provider-contract.md
+- created: payment-provider-contract.md
 - updated: technology.md
 - updated: architecture.md
 ```

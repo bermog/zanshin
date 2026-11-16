@@ -100,7 +100,7 @@ What lives where:
 - **`core/`**: singletons and app-wide code with no UI except the layout. Models, config, services, validators, utilities.
 - **`features/`**: routed pages. Each feature owns its route file and page components.
 - **`shared/`**: reusable presentational components, directives and pipes. They receive data through inputs and report through outputs; they never inject `BoardService`.
-- **`src/styles/`**: all styles in the app, as one global Sass project in six numbered layers that follow the reference structure in [source-design-system-reference-folder-structure.md](source-design-system-reference-folder-structure.md). Lower numbers come first in the cascade and may be used by higher ones, never the reverse. All six folders always exist:
+- **`src/styles/`**: all styles in the app, as one global Sass project in six numbered layers that follow the reference structure in [design-system-folder-structure.md](design-system-folder-structure.md). Lower numbers come first in the cascade and may be used by higher ones, never the reverse. All six folders always exist:
   - `s01_utilities`: Sass variables, functions and mixins. Compile-time only; emits no CSS.
   - `s02_vendor`: third-party CSS. Empty in Zanshin.
   - `s03_base`: custom properties on `:root` (system and semantic tokens), reset, element typography and fonts.
@@ -127,7 +127,7 @@ Deviations from the generic structure:
 - Models: `<entity>.model.ts`. Types and interfaces in `PascalCase`, no `I` prefix.
 - Routes: `<feature>.routes.ts`, exported constant `<FEATURE>_ROUTES` (e.g. `CARD_ROUTES`).
 - Config: `<name>.config.ts`, exported constants in `UPPER_SNAKE_CASE`.
-- Tests: `<file>.spec.ts` next to the file under test.
+- Tests: `<file>.spec.ts` next to the file under test. See [testing.md](testing.md).
 - SCSS partials: leading underscore, `_kebab-case.scss`. Layout partials `_l-<name>.scss`, component partials `_c-<name>.scss`, one block per partial. Layer folders `sNN_<name>` with a two-digit number.
 
 **Symbols:**
@@ -199,7 +199,7 @@ Deviations from the generic structure:
 - **Routed card actions.** New, edit and delete are child routes (`/cards/new`, `/cards/:id/edit`, `/cards/:id/delete`) rendered over the board, with route params bound to component inputs. *Why:* follows the project structure's `<entity>-new/edit/delete` pattern and makes each action linkable and testable.
 - **Drag and drop with CDK**, plus keyboard controls on each card (move to previous/next column, move up/down) and live-region announcements. *Why:* CDK drag-drop is not fully usable by keyboard on its own.
 - **Global Sass architecture instead of Angular component styles.** All styles are one Dart Sass project in `src/styles/`, layered `s01_utilities` → `s02_vendor` → `s03_base` → `s04_global` → `s05_components` → `s06_layouts`. Angular components only apply classes. *Why:* one predictable cascade, BEM blocks that can be reused by any template, and a style layer that can be read and reviewed on its own.
-- **Styling: values flow through five steps, compiled with Dart Sass.**
+- **Styling: values flow through seven steps, compiled with Dart Sass.**
   1. **System variables** (`s01_utilities/_system-variables.scss`): raw values as Sass maps (`$colors`, `$font-sizes`, `$paddings`, `$radii`, `$shadows`, `$durations`…). Compile time only.
   2. **Semantic variables** (`s01_utilities/_semantic-variables.scss`): Sass maps that give roles to raw values by key (`$semantic-colors: ('surface': 'paper-50', 'accent': 'vermilion-500', …)`). Compile time only.
   3. **System tokens** (`s03_base/_system-tokens.scss`): `--zn-sys-*` custom properties on `:root`, generated with `@each` from the system variables. The full palette and every scale step.
@@ -245,3 +245,10 @@ Deviations from the generic structure:
   *Why:* raw values change in one place; semantic tokens give one place to retheme the app (dark mode is a remap of `--zn-sem-*` inside a theme selector or media query); design tokens make each block's adjustable surface explicit; private state keeps modifiers small and independent. The full rules are in [design-system.md](design-system.md#value-flow).
 - **Visual direction.** Calm and restrained, inspired by kyūdō: off-white paper surfaces, ink-dark text, one vermilion accent (the target's centre), generous spacing and subtle motion. Each column has a quiet accent tied to its stage of the shot.
 - **All components use `ChangeDetectionStrategy.OnPush`** and signal inputs/outputs; templates use built-in control flow.
+
+## Sources
+
+- `llm_wiki/raw/design-system-reference-folder-structure.md`, ingested 2026-11-14. Summary: [design-system-folder-structure.md](design-system-folder-structure.md).
+- `llm_wiki/raw/design-system-reference-bem.md`, ingested 2026-11-14. Summary: [design-system-bem.md](design-system-bem.md).
+- `llm_wiki/raw/design-system-reference-tokens.md`, ingested 2026-11-14. Summary: [design-system-tokens.md](design-system-tokens.md).
+- `llm_wiki/raw/design-system-reference-layout.md`, ingested 2026-11-14. Summary: [design-system-layout.md](design-system-layout.md).

@@ -4,7 +4,7 @@ description: Summary of the reference course page on the folder structure of a S
 
 # Source: design-system reference, folder structure
 
-What it is: page 17 of the reference course series on design systems (a DAW/DIW course, CC BY-SA 4.0), based on the Sass Guidelines 7-1 architecture. It is the reference structure for `src/styles/` in Zanshin. Page last modified 2026-10-30; filed in [raw/design-system-reference-folder-structure.md](raw/design-system-reference-folder-structure.md) on 2026-11-14. The sibling pages are filed as [source-design-system-reference-bem.md](source-design-system-reference-bem.md), [source-design-system-reference-tokens.md](source-design-system-reference-tokens.md), [source-design-system-reference-globals.md](source-design-system-reference-globals.md) and [source-design-system-reference-layout.md](source-design-system-reference-layout.md).
+What it is: page 17 of the reference course series on design systems (a DAW/DIW course, CC BY-SA 4.0), based on the Sass Guidelines 7-1 architecture. It is the reference structure for `src/styles/` in Zanshin. Page last modified 2026-10-30; filed in [raw/design-system-reference-folder-structure.md](raw/design-system-reference-folder-structure.md) on 2026-11-14. The sibling pages are filed as [design-system-bem.md](design-system-bem.md), [design-system-tokens.md](design-system-tokens.md), [design-system-globals.md](design-system-globals.md) and [design-system-layout.md](design-system-layout.md).
 
 Statements that matter for the project:
 

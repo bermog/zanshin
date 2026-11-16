@@ -4,7 +4,7 @@ description: The styling system in one place: Sass layers, system and semantic v
 
 # Design system
 
-What belongs here: how styles are organized and how a value travels from a raw Sass map to a CSS declaration. The structure and rules follow a reference course on design systems, filed as five sources: [folder structure](source-design-system-reference-folder-structure.md), [BEM](source-design-system-reference-bem.md), [tokens](source-design-system-reference-tokens.md), [global modifiers](source-design-system-reference-globals.md) and [layout blocks](source-design-system-reference-layout.md). [architecture.md](architecture.md) and [technology.md](technology.md) stay the source of truth for file layout and tooling; this page links to them.
+What belongs here: how styles are organized and how a value travels from a raw Sass map to a CSS declaration. The structure and rules follow a reference course on design systems, filed as five sources: [folder structure](design-system-folder-structure.md), [BEM](design-system-bem.md), [tokens](design-system-tokens.md), [global modifiers](design-system-globals.md) and [layout blocks](design-system-layout.md). [architecture.md](architecture.md) and [technology.md](technology.md) stay the source of truth for file layout and tooling; this page links to them.
 
 ## Principles
 
@@ -112,7 +112,7 @@ The full naming list is in [architecture.md](architecture.md#naming-conventions)
 A global modifier (`g--`) is a class usable on any element that changes **one property only**, from a system token, with `!important`. It replaces an inline `style`, which cannot be responsive.
 
 - Pattern: `g--<property>-<step>`, with `-<side>-`, `-horizontal-` and `-vertical-` variants for margins and paddings; the value is `var(--zn-sys-<property>-<step>)`.
-- Files in `s04_global`, one per type: `_g--color.scss` (`color`, `background-color`, `border-color` from the semantic colours), `_g--font-size.scss`, `_g--margin.scss`, `_g--padding.scss`. Generated with `@each` over the same maps as the system tokens, so class and token always match.
+- Files in `s04_global`, one per type: `_g--color.scss` (`color`, `background-color`, `border-color` from the system colour tokens), `_g--font-size.scss`, `_g--margin.scss`, `_g--padding.scss`. Generated with `@each` over the same maps as the system tokens, so class and token always match.
 - Responsive variants: the same class with a `@<breakpoint>` suffix, generated from `$breakpoints` inside `min-width` media queries, in the same file and **after** the base classes (the base already carries `!important`; placed before, it wins and the variant does nothing). The `@` is escaped as `\@` in the selector, not in the template: `class="g--padding-sm g--padding-lg@desktop"`. Breakpoint names come from `$breakpoints` in `s01_utilities`.
 - Use without excess. A `g--` class is for a one-off spacing or size on a specific element in a template. When the same combination repeats, or it changes the look of a block, it is a block modifier instead.
 
@@ -158,3 +158,11 @@ Where Zanshin differs from the reference course, and why:
 - Stage 8 does the visual refinement and removes the sandbox from production builds.
 
 Every text/background semantic colour pair must meet WCAG 2.2 AA contrast; see [accessibility.md](accessibility.md).
+
+## Sources
+
+- `llm_wiki/raw/design-system-reference-folder-structure.md`, ingested 2026-11-14. Summary: [design-system-folder-structure.md](design-system-folder-structure.md).
+- `llm_wiki/raw/design-system-reference-bem.md`, ingested 2026-11-14. Summary: [design-system-bem.md](design-system-bem.md).
+- `llm_wiki/raw/design-system-reference-tokens.md`, ingested 2026-11-14. Summary: [design-system-tokens.md](design-system-tokens.md).
+- `llm_wiki/raw/design-system-reference-globals.md`, ingested 2026-11-14. Summary: [design-system-globals.md](design-system-globals.md).
+- `llm_wiki/raw/design-system-reference-layout.md`, ingested 2026-11-14. Summary: [design-system-layout.md](design-system-layout.md).

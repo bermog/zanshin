@@ -20,5 +20,3 @@ Statements that matter for the project:
 10. `transparent` is a keyword, not a token; a transparent border that keeps the size is a CSS trick, not a design decision.
 
 Pages changed by this source: [design-system.md](design-system.md#value-flow), [architecture.md](architecture.md#architectural-decisions).
-
-Conflict: the reference says modifiers change private state, never design tokens; [design-system.md](design-system.md#value-flow) previously said modifiers reassign design tokens. The reference rule was adopted on 2026-11-14 when this source was ingested.

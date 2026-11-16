@@ -43,7 +43,7 @@ Tasks:
 - Remove `zone.js` if the CLI added it. Confirm `provideZonelessChangeDetection()` (or the v22 default) in `app.config.ts`.
 - Add path aliases `@core/*`, `@features/*`, `@shared/*` in `tsconfig.json`. Enable `noUncheckedIndexedAccess`.
 - Add `src/styles` to `stylePreprocessorOptions.includePaths` in `angular.json`. Create the six layer folders `s01_utilities`, `s02_vendor`, `s03_base`, `s04_global`, `s05_components`, `s06_layouts`, each with an empty `_index.scss`, and `@use` `s02` to `s06` in order from `styles.scss` (see [design-system.md](design-system.md#layers)).
-- Install and configure angular-eslint, Prettier and Stylelint (BEM selectors with `c-`/`l-` prefixes).
+- Install and configure angular-eslint, Prettier and Stylelint (BEM selectors with `c-`/`l-`/`g--` prefixes).
 - Add ESLint rules: `no-restricted-imports` for `rxjs`, import order, module boundaries between `core`, `shared` and `features`.
 - Confirm Vitest runs with `pnpm test`.
 - Add `package.json` scripts: `start`, `build`, `test`, `lint`, `format`.
@@ -63,7 +63,7 @@ Done when:
 
 Tasks:
 
-- `s01_utilities/_system-variables.scss`: raw values as Sass maps: `$colors` (paper, ink, vermilion accent, a quiet accent per column), `$font-families`, `$font-sizes`, `$font-weights`, `$line-heights`, `$paddings`, `$radii`, `$shadows`, `$durations`, `$easings`, `$breakpoints`.
+- `s01_utilities/_system-variables.scss`: raw values as Sass maps: `$colors` (paper, ink, vermilion accent, a quiet accent per column), `$font-families`, `$font-sizes`, `$font-weights`, `$line-heights`, `$paddings`, `$margins`, `$radii`, `$shadows`, `$durations`, `$easings`, `$breakpoints`.
 - `s01_utilities/_semantic-variables.scss`: role maps pointing at system keys: `$semantic-colors` (surface, surface-raised, on-surface, muted, accent, on-accent, border, focus-ring, danger, one per column), plus any other roles needed (e.g. `$semantic-elevations`).
 - `s01_utilities/_mixins.scss`: breakpoints, focus ring, visually-hidden, reduced-motion wrapper. `s01_utilities/_functions.scss`: helpers for reading the maps (may start empty).
 - `s04_global`: `_g--color.scss`, `_g--font-size.scss`, `_g--margin.scss`, `_g--padding.scss`, each generated from the system maps with the responsive variants after the base classes. `s02_vendor/_index.scss` stays empty.
@@ -80,7 +80,7 @@ Done when:
 
 - All system and semantic tokens exist and are documented with a short comment; `s01_utilities` emits no CSS.
 - `c-button` declares its design tokens, then its private state, at the top of its block; its properties read only those; its modifier only sets private state.
-- Stylelint rejects a Sass variable, a literal colour, a missing `c-`/`l-` prefix or an `!important` in `s05_components` / `s06_layouts`.
+- Stylelint rejects a Sass variable, a literal colour, a missing `c-`/`l-`/`g--` prefix or an `!important` in `s05_components` / `s06_layouts`.
 - Every text/background pair meets WCAG 2.2 AA contrast.
 - No component code exists yet; the sandbox renders correctly in light mode.
 
@@ -120,7 +120,7 @@ Tasks:
 - `shared/components/kanban-column` (`.c-kanban-column`): title, card count, empty state, card list. Inputs only.
 - `shared/components/kanban-card` (`.c-kanban-card`): title and a short description preview. Inputs only.
 - Layouts `l-app` (header + main) and `l-board` (the four-column track).
-- A column modifier per stage (`.c-kanban-column--quiver`, etc.) that only reassigns the column's design tokens (e.g. `--kanban-column-accent`) to the matching semantic token (`--zn-sem-color-column-quiver`).
+- A column modifier per stage (`.c-kanban-column--quiver`, etc.) that only changes the column's private state (e.g. `--kanban-column-privateState-accent`) to the matching semantic token (`--zn-sem-color-column-quiver`).
 - `features/not-found`: simple page with a link back to the board.
 - Temporary seed data for development (a dev-only helper, never shipped).
 
@@ -159,7 +159,7 @@ Done when:
 Tasks:
 
 - Connect the four columns with CDK drag-drop (`cdkDropListGroup`). Call `moveCard` on drop.
-- Drag preview and placeholder styled through design tokens; `.c-kanban-card--dragging` modifier reassigns tokens only. CDK's preview and placeholder elements get `c-kanban-card` modifier classes, since there are no component-scoped styles.
+- Drag preview and placeholder styled through design tokens; `.c-kanban-card--dragging` modifier changes private state only. CDK's preview and placeholder elements get `c-kanban-card` modifier classes, since there are no component-scoped styles.
 - Keyboard controls on each focused card: move to the previous or next column, move up or down within the column. Add visible hints (for example in the card's action menu or a tooltip).
 - Announce every move through a live region ("Moved 'Fix login' to Draw, position 2 of 5").
 - Keep focus on the moved card after a keyboard move.
@@ -250,3 +250,7 @@ Done when:
 ## After v1 (not planned yet)
 
 This plan covers v1 only. Ideas for later releases, grouped by release, live in [roadmap.md](roadmap.md#after-v1); the "out of scope" list in [product.md](product.md#out-of-scope-for-now) is where they come from. Before work on any of them starts, this plan gets new stages for it.
+
+## Sources
+
+- `llm_wiki/raw/design-system-reference-folder-structure.md`, ingested 2026-11-14. Summary: [design-system-folder-structure.md](design-system-folder-structure.md).
